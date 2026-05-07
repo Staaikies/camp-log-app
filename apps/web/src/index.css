@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans:
+    ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 10px;
+}
+
+:root {
+  /* Default (current) scheme */
+  --bg: 2 6 23; /* slate-950 */
+  --fg: 241 245 249; /* slate-100 */
+  --muted: 148 163 184; /* slate-400 */
+  --muted-2: 100 116 139; /* slate-500 */
+  --panel: 15 23 42; /* slate-900 */
+  --panel-2: 30 41 59; /* slate-800 */
+  --border: 30 41 59; /* slate-800 */
+  --accent: 52 211 153; /* emerald-400 */
+  --accent-2: 16 185 129; /* emerald-500 */
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: 248 250 252; /* slate-50 */
+  --fg: 15 23 42; /* slate-900 */
+  --muted: 71 85 105; /* slate-600 */
+  --muted-2: 100 116 139; /* slate-500 */
+  --panel: 255 255 255; /* white */
+  --panel-2: 241 245 249; /* slate-100 */
+  --border: 226 232 240; /* slate-200 */
+  --accent: 5 150 105; /* emerald-600 */
+  --accent-2: 4 120 87; /* emerald-700 */
+  color-scheme: light;
+}
+
+/* Pleasant alternate: "Aurora" (dark, violet accent) */
+[data-theme="aurora"] {
+  --bg: 3 7 18; /* deep navy */
+  --fg: 241 245 249; /* slate-100 */
+  --muted: 148 163 184; /* slate-400 */
+  --muted-2: 100 116 139; /* slate-500 */
+  --panel: 17 24 39; /* slate-900-ish */
+  --panel-2: 31 41 55; /* slate-800-ish */
+  --border: 51 65 85; /* slate-700 */
+  --accent: 167 139 250; /* violet-400 */
+  --accent-2: 139 92 246; /* violet-500 */
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  background: rgb(var(--bg));
+  color: rgb(var(--fg));
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-splash {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: rgb(var(--bg));
+  color: rgb(var(--accent));
+}
+
+.app-splash__icon {
+  width: 3rem;
+  height: 3rem;
+  animation: splash-pulse 1.2s ease-in-out infinite;
+}
+
+.app-splash__label {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgb(var(--fg));
+}
+
+@keyframes splash-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}

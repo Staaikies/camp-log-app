@@ -1,0 +1,23 @@
+{
+  "name": "camp-log",
+  "private": true,
+  "packageManager": "pnpm@9.15.4",
+  "scripts": {
+    "build": "pnpm -r run build",
+    "dev:api": "pnpm --filter @camp-log/api dev",
+    "dev:web": "pnpm --filter @camp-log/web dev",
+    "preview:web": "pnpm --filter @camp-log/web preview",
+    "dev:native": "pnpm --filter @camp-log/native start",
+    "db:generate": "pnpm --filter @camp-log/db generate",
+    "db:migrate": "pnpm --filter @camp-log/db migrate",
+    "db:studio": "pnpm --filter @camp-log/db studio",
+    "lint": "pnpm typecheck",
+    "typecheck": "pnpm -r run typecheck"
+  },
+  "engines": {
+    "node": ">=20.8.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
+}
