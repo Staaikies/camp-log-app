@@ -33,6 +33,7 @@ export function HomeOnline() {
   const lastAdded = getLastAddedTrip(trips);
   const gallery = collectFavouritePhotoGalleryItems(trips);
   const lastThumb = lastAdded ? getTripListThumbnailUrl(lastAdded) : null;
+  const [memorySeed] = useState(() => Math.floor(Date.now() / 86_400_000));
 
   const averageRating = useMemo(() => {
     if (trips.length === 0) return 0;
@@ -42,10 +43,9 @@ export function HomeOnline() {
 
   const memoryOfDay = useMemo(() => {
     if (gallery.length === 0) return null;
-    const daySeed = Math.floor(Date.now() / 86_400_000);
-    const i = Math.abs(daySeed) % gallery.length;
+    const i = Math.abs(memorySeed) % gallery.length;
     return gallery[i] ?? null;
-  }, [gallery]);
+  }, [gallery, memorySeed]);
 
   const seasonCounts = useMemo(() => {
     const counts: Record<SeasonKey, number> = {

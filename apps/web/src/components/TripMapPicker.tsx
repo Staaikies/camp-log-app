@@ -9,7 +9,7 @@ import {
 import { Geolocation } from "@capacitor/geolocation";
 import { Capacitor } from "@capacitor/core";
 import { LocateFixed, MapPin, Search } from "lucide-react";
-import { useEffect, useId, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { getGoogleMapId, getGoogleMapsApiKey } from "@/lib/env";
@@ -232,13 +232,13 @@ function GoogleMapShell({
     }));
   }, [position.lat, position.lng]);
 
-  const onSearchResolved = (lat: number, lng: number) => {
+  const onSearchResolved = useCallback((lat: number, lng: number) => {
     skipCameraSyncRef.current = true;
     onChange({ lat, lng });
     setCamera({ center: { lat, lng }, zoom: SEARCH_ZOOM });
-  };
+  }, [onChange]);
 
-  const requestCurrentLocation = () => {
+  const requestCurrentLocation = useCallback(() => {
     setGeoError(null);
     void getCurrentPositionFromDevice()
       .then(({ lat, lng }) => {
@@ -251,14 +251,14 @@ function GoogleMapShell({
           setGeoError("Location permission is off. Enable it for Camp Log to use your current location.");
         }
       });
-  };
+  }, [onSearchResolved]);
 
   useEffect(() => {
     const isZeroPin = Math.abs(position.lat) < 0.000001 && Math.abs(position.lng) < 0.000001;
     if (!isZeroPin || requestedCurrentLocationRef.current) return;
     requestedCurrentLocationRef.current = true;
     requestCurrentLocation();
-  }, [position.lat, position.lng]);
+  }, [position.lat, position.lng, requestCurrentLocation]);
 
   return (
     <>
