@@ -68,7 +68,7 @@ export function HomeOnline() {
   const [activeSeason, setActiveSeason] = useState<SeasonKey | null>(null);
   const seasonOrder: SeasonKey[] = ["spring", "summer", "autumn", "winter"];
   const seasonToneClass: Record<SeasonKey, string> = {
-    spring: "bg-[rgb(var(--accent))/0.8]",
+    spring: "bg-emerald-400/85",
     summer: "bg-amber-300/85",
     autumn: "bg-orange-400/80",
     winter: "bg-sky-300/80",

@@ -68,7 +68,6 @@ export function SettingsOnline() {
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
                     <p className="font-medium text-[rgb(var(--fg))]">{t.label}</p>
-                    <p className="mt-1 text-xs text-[rgb(var(--muted))]">{t.description}</p>
                   </div>
                   {active ? (
                     <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[rgb(var(--accent)/0.15)] text-[rgb(var(--accent))]">
@@ -79,18 +78,18 @@ export function SettingsOnline() {
 
                 <div className="mt-4 flex items-center gap-2">
                   <span
-                    className="h-4 w-4 rounded-full border"
-                    style={{ background: t.preview.bg, borderColor: "rgba(255,255,255,0.08)" }}
+                    className="h-4 w-4 rounded-full border border-[rgb(var(--border))]"
+                    style={{ background: t.preview.bg }}
                     aria-hidden
                   />
                   <span
-                    className="h-4 w-4 rounded-full border"
-                    style={{ background: t.preview.panel, borderColor: "rgba(255,255,255,0.08)" }}
+                    className="h-4 w-4 rounded-full border border-[rgb(var(--border))]"
+                    style={{ background: t.preview.panel }}
                     aria-hidden
                   />
                   <span
-                    className="h-4 w-4 rounded-full border"
-                    style={{ background: t.preview.accent, borderColor: "rgba(255,255,255,0.08)" }}
+                    className="h-4 w-4 rounded-full border border-[rgb(var(--border))]"
+                    style={{ background: t.preview.accent }}
                     aria-hidden
                   />
                 </div>

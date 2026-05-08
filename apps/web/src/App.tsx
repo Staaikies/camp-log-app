@@ -21,14 +21,33 @@ function Shell({ children }: { children: ReactNode }) {
     <div className="flex min-h-dvh flex-col bg-[rgb(var(--bg))] pt-[env(safe-area-inset-top)] text-[rgb(var(--fg))]">
       <header className="border-b border-[rgb(var(--border))] bg-[rgb(var(--bg)/0.95)] px-4 py-3 md:px-6 md:py-4">
         <nav className="mx-auto flex max-w-3xl items-center justify-between gap-4">
-          <div className="flex min-w-0 items-center gap-2">
-            <Link className="flex min-w-0 items-center gap-2 font-semibold" to="/">
-              <TreePine
-                className="h-7 w-7 shrink-0 text-[rgb(var(--accent))] md:h-8 md:w-8"
-                aria-hidden
-              />
-              <span className="truncate">Camp Log</span>
-            </Link>
+          <Link className="flex min-w-0 items-center gap-2 font-semibold" to="/">
+            <TreePine className="h-7 w-7 shrink-0 text-[rgb(var(--accent))] md:h-8 md:w-8" aria-hidden />
+            <span className="truncate">Camp Log</span>
+          </Link>
+
+          <div className="flex items-center justify-end gap-2 md:gap-3">
+            <div className="hidden flex-wrap items-center justify-end gap-2 md:flex md:gap-3">
+              <Button asChild variant="outline" size="sm">
+                <Link to="/">
+                  <Home className="h-4 w-4" aria-hidden />
+                  Home
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="sm">
+                <Link to="/trips/new">
+                  <Plus className="h-4 w-4" aria-hidden />
+                  Add trip
+                </Link>
+              </Button>
+              <Button asChild size="sm">
+                <Link to="/trips">
+                  <List className="h-4 w-4" aria-hidden />
+                  Trips
+                </Link>
+              </Button>
+            </div>
+
             <Link
               to="/settings"
               className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-[rgb(var(--border))] bg-[rgb(var(--bg)/0.4)] text-[rgb(var(--muted))] transition-colors hover:bg-[rgb(var(--panel)/0.5)] hover:text-[rgb(var(--fg))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent)/0.4)]"
@@ -37,26 +56,6 @@ function Shell({ children }: { children: ReactNode }) {
             >
               <Settings className="h-4 w-4" aria-hidden />
             </Link>
-          </div>
-          <div className="hidden flex-wrap items-center justify-end gap-2 md:flex md:gap-3">
-            <Button asChild variant="outline" size="sm">
-              <Link to="/">
-                <Home className="h-4 w-4" aria-hidden />
-                Home
-              </Link>
-            </Button>
-            <Button asChild variant="outline" size="sm">
-              <Link to="/trips/new">
-                <Plus className="h-4 w-4" aria-hidden />
-                Add trip
-              </Link>
-            </Button>
-            <Button asChild size="sm">
-              <Link to="/trips">
-                <List className="h-4 w-4" aria-hidden />
-                Trips
-              </Link>
-            </Button>
           </div>
         </nav>
       </header>
